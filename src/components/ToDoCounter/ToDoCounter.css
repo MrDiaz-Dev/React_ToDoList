@@ -1,0 +1,11 @@
+.ToDoCounter {
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
+  padding: 48px;
+}
+
+.ToDoCounter h2 {
+  color: 'red';
+  background-color: 'yellow';
+}
