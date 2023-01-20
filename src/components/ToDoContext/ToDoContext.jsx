@@ -44,6 +44,7 @@ const ToDoProvider = (props) => {
   }
   
   const completeToDos = (text) => {
+    console.log(text);
     const toDoIndex = toDos.findIndex(tarea => tarea.text === text);
     const newToDos = [...toDos];
     newToDos[toDoIndex].completed = !toDos[toDoIndex].completed;

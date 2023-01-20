@@ -12,6 +12,8 @@ import { ToDoAddButton } from '../ToDoAddButton/ToDoAddButton';
 import { ToDoContext } from '../ToDoContext/ToDoContext'
 import { Modal } from '../Modal/Modal';
 import { ToDoForm } from '../ToDoForm/ToDoForm';
+import { ToDosLoading } from '../ToDosLoading/ToDosLoading'
+import { EmptyToDos } from '../EmptyToDos/EmptyToDos';
 
 const AppUI = () => {
 
@@ -34,35 +36,22 @@ const AppUI = () => {
 
       <ToDoList>
 
-        {
-          loading && 
-          <div id="contenedor">
-            <div className="loader" id="loader">Loading...</div>
-          </div>
-        }
+        {loading && <ToDosLoading />}
         
-        {
-          (!loading && searchedToDos.length === 0) && 
-          
-          <div className='creatodo'>
-            <h3>
-              Crea tu primera Tarea!! :D
-            </h3>
-          </div>
-        }
+        {(!loading && searchedToDos.length === 0) && <EmptyToDos />}
 
-
-        {error && <p>Hubo un error, es tiempo para panico</p>}
+        {error && <ToDosError />}
 
         {searchedToDos.map(tarea => (
           <ToDoItem
             key={tarea.text}
             text={tarea.text}
             completed={tarea.completed}
-            completeToDos={completeToDos}
-            deleteToDos={deleteToDos}
+            completeToDos={() => {completeToDos(tarea.text)}}
+            deleteToDos={() => {deleteToDos(tarea.text)}}
           /> 
         ))}
+        
       </ToDoList>
 
       {!!openModal && (

@@ -1,11 +1,17 @@
 .ToDoItem {
-  background-color: #FAFAFA;
+  background-color: #121f3d;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 24px;
   box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+  border: 1px solid #007fd4;
+  border-radius: 15px;
+}
+
+.ToDoItem:hover {
+  box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
 }
 
 .ToDoItem-p {

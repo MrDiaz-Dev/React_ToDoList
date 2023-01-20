@@ -1,8 +1,12 @@
 body {
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
   padding: 0;
-  background: #F2F4F5;
-  color: #1E1E1F;
+  background: #03091e;
+  color: #59aad6;
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
