@@ -6,6 +6,8 @@ const useLocalStorage = (itemName, initialValue = []) => {
 
   const [error, setError] = useState(false);
 
+  const [errorInfo, setErrorInfo] = useState('')
+
   const [item, setItem] = useState(initialValue);
 
   useEffect(() => {
@@ -27,10 +29,12 @@ const useLocalStorage = (itemName, initialValue = []) => {
           setloading(false);
         } catch(error) {
           setError(true);
+          setErrorInfo(error)
         }
-      }, 3000);
+      }, 1500);
     }
-  });
+  }, []);
+  
   
 
   const saveItem = (newItem) => { 
@@ -41,6 +45,7 @@ const useLocalStorage = (itemName, initialValue = []) => {
       setItem(newItem);
     } catch (error) {
       setError(true);
+      setErrorInfo(error)
     }
   };
 
@@ -48,7 +53,8 @@ const useLocalStorage = (itemName, initialValue = []) => {
     item, 
     saveItem,
     loading,
-    error
+    error,
+    errorInfo
   };
 }
 

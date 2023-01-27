@@ -5,7 +5,10 @@
   padding: 48px;
 }
 
-.ToDoCounter h2 {
-  color: 'red';
-  background-color: 'yellow';
+.ToDoCounter--loading {
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
+  padding: 48px;
+  opacity: 25%;
 }

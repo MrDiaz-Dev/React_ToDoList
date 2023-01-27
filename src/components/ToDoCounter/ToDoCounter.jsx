@@ -1,20 +1,14 @@
-// @ts-nocheck
-import { useContext } from "react";
-import { ToDoContext } from "../ToDoContext/ToDoContext";
 import './ToDoCounter.css';
 
-const ToDoCounter = () => {
-
-  const { 
-    total, 
-    completed 
-  } = useContext(ToDoContext)
-
+const ToDoCounter = ({ total, completed, loading }) => {
+  
   return (
-    <h2 className="ToDoCounter"> 
-      Has completado {completed} de {total} Tareas 
+    <h2 className={`ToDoCounter${!!loading && '--loading'}`}> 
+      {!loading && `Has completado ${completed} de ${total} Tareas`}  
+      {!!loading && `Cargando Tareas...`} 
     </h2>
   )
 }
 
 export {ToDoCounter};
+

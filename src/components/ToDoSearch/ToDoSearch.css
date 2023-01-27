@@ -26,3 +26,7 @@
 .ToDoSearch:hover {
   box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
 }
+
+.ToDoSearch:disabled {
+  opacity: 25%;
+}

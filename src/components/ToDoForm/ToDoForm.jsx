@@ -1,14 +1,8 @@
 // @ts-nocheck
 import './ToDoForm.css';
-import { useContext,useState } from 'react';
-import { ToDoContext } from '../ToDoContext/ToDoContext';
+import { useState } from 'react';
 
-const ToDoForm = () => {
-
-  const { 
-    addToDo, 
-    setOpenModal 
-  } = useContext(ToDoContext)
+const ToDoForm = ({ addToDo, setOpenModal }) => {
 
   const [newToDoValue, setNewToDoValue] = useState('')
 
@@ -20,10 +14,11 @@ const ToDoForm = () => {
     setOpenModal(prevState => !prevState);
   }
 
-  const onAdd = (event) => { 
+  const onAdd = () => { 
     addToDo(newToDoValue);
     setOpenModal(prevState => !prevState);
   }
+
 
   return (
     <form action="#" onSubmit={onAdd}>

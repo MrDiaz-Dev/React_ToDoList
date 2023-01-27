@@ -1,11 +1,8 @@
 // @ts-nocheck
 import { useContext } from "react";
-import { ToDoContext } from "../ToDoContext/ToDoContext";
 import './ToDoAddButton.css';
 
-const ToDoAddButton = () => {
-
-  const { setOpenModal } = useContext(ToDoContext);
+const ToDoAddButton = ({ setOpenModal }) => {
 
   const onClickAddButton = () => {
     setOpenModal(prevState => !prevState);

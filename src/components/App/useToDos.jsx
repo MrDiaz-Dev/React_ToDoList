@@ -1,16 +1,15 @@
 // @ts-nocheck
-import { createContext, useState } from 'react'
+import { useState } from 'react'
 import { useLocalStorage } from './useLocalStorage'
 
-const ToDoContext = createContext('');
-
-const ToDoProvider = (props) => { 
+const useToDos = () => { 
 
   const {
     item: toDos, 
     saveItem: saveToDos, 
     loading: loading,
-    error: error
+    error: error,
+    errorInfo: errorInfo
   } = useLocalStorage('TODOS_V1')
 
   const [openModal, setOpenModal] = useState(false);
@@ -59,24 +58,21 @@ const ToDoProvider = (props) => {
   }  
 
 
-  return (
-    <ToDoContext.Provider value={{
-      error,
-      loading,
-      total: totalToDos ,
-      completed: completedToDos,
-      searchValue,
-      setSearchValue,
-      completeToDos,
-      deleteToDos,
-      searchedToDos,
-      openModal,
-      setOpenModal,
-      addToDo
-    }}>
-      {props.children}
-    </ToDoContext.Provider>
-  )
+  return ({
+    error,
+    errorInfo,
+    loading,
+    totalToDos ,
+    completedToDos,
+    searchValue,
+    setSearchValue,
+    completeToDos,
+    deleteToDos,
+    searchedToDos,
+    openModal,
+    setOpenModal,
+    addToDo
+  });
 }
 
-export { ToDoContext, ToDoProvider };
+export { useToDos };
