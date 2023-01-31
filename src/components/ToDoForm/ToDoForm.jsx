@@ -1,6 +1,5 @@
-// @ts-nocheck
-import './ToDoForm.css';
 import { useState } from 'react';
+import './ToDoForm.css';
 
 const ToDoForm = ({ addToDo, setOpenModal }) => {
 
@@ -14,7 +13,8 @@ const ToDoForm = ({ addToDo, setOpenModal }) => {
     setOpenModal(prevState => !prevState);
   }
 
-  const onAdd = () => { 
+  const onAdd = (event) => { 
+    event.preventDefault()
     addToDo(newToDoValue);
     setOpenModal(prevState => !prevState);
   }
@@ -55,3 +55,5 @@ const ToDoForm = ({ addToDo, setOpenModal }) => {
 }
 
 export { ToDoForm };
+
+

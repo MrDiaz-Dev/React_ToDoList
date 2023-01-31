@@ -9,12 +9,15 @@ const useToDos = () => {
     saveItem: saveToDos, 
     loading: loading,
     error: error,
-    errorInfo: errorInfo
+    errorInfo: errorInfo,
+    sincronizeItem: sincronizeToDos
   } = useLocalStorage('TODOS_V1')
 
   const [openModal, setOpenModal] = useState(false);
   
   const [searchValue, setSearchValue] = useState('');
+
+  const [storageChange, setStorageChange] = useState(false)
   
   let searchedToDos = [];
   
@@ -43,7 +46,6 @@ const useToDos = () => {
   }
   
   const completeToDos = (text) => {
-    console.log(text);
     const toDoIndex = toDos.findIndex(tarea => tarea.text === text);
     const newToDos = [...toDos];
     newToDos[toDoIndex].completed = !toDos[toDoIndex].completed;
@@ -71,7 +73,10 @@ const useToDos = () => {
     searchedToDos,
     openModal,
     setOpenModal,
-    addToDo
+    addToDo,
+    sincronizeToDos,
+    storageChange,
+    setStorageChange
   });
 }
 

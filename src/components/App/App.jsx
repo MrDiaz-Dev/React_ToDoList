@@ -13,6 +13,8 @@ import { ToDosError } from '../ToDosError/ToDosError';
 import { ToDoHeader } from '../ToDoHeader/ToDoHeader'
 import { EmptyResults } from '../EmptyResults/EmptyResults';
 import { useToDos } from './useToDos';
+import { ChangeAlert } from '../ChangeAlert/ChangeAlert';
+import { Fragment } from 'react';
 
 const App = () => {
 
@@ -29,31 +31,40 @@ const App = () => {
     searchValue, 
     setSearchValue,
     addToDo,
-    setOpenModal 
+    setOpenModal,
+    sincronizeToDos,
+    storageChange,
+    setStorageChange
   } = useToDos();
   
   return (
-    <div className='app'>
-      {/* INCIO DE TO DO PAGE */}
+    <Fragment>
 
       <ToDoHeader loading={loading}>
-        <br />
         <ToDoCounter
           total={totalToDos}
           completed={completedToDos}
+          storageChange={storageChange}
           />
-        <br />
         <ToDoSearch
           searchValue={searchValue}
           setSearchValue={setSearchValue}
+          storageChange={storageChange}
+        />
+        <ChangeAlert 
+          sincronize={sincronizeToDos}
+          storageChange={storageChange}
+          setStorageChange={setStorageChange}
         />
       </ToDoHeader> 
+
 
       <ToDoList 
         error={error}
         loading={loading}
         searchedToDos={searchedToDos}
         totalToDos={totalToDos}
+        storageChange={storageChange}
         onError={() => <ToDosError errorInfo={errorInfo} />}
         onLoading={() => <ToDosLoading />}
         onEmptyToDos={() => <EmptyToDos />}
@@ -81,7 +92,8 @@ const App = () => {
       <ToDoAddButton 
         setOpenModal={setOpenModal}
       />
-    </div>
+
+    </Fragment>
   )
 }
 

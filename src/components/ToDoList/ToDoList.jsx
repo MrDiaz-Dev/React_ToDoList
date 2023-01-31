@@ -11,7 +11,8 @@ const ToDoList = ({
     onEmptyToDos,
     onEmptyResults, 
     renderToDos, 
-    totalToDos 
+    totalToDos,
+    storageChange 
   }) => {
   return (
     <Fragment>
@@ -24,7 +25,7 @@ const ToDoList = ({
         {(!loading && !searchedToDos.length && !!totalToDos) && onEmptyResults()}
 
         <ul>
-          {!children && searchedToDos.map(tarea => renderToDos(tarea))}
+          {(!children && !error && !loading && !storageChange) && searchedToDos.map(tarea => renderToDos(tarea))}
           {children && children}
         </ul>
       </section>   

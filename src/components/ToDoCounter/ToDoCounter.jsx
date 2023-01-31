@@ -1,12 +1,25 @@
+import { Fragment } from 'react';
 import './ToDoCounter.css';
 
-const ToDoCounter = ({ total, completed, loading }) => {
-  
+const ToDoCounter = ({ total, completed, loading, storageChange}) => {
+
+  let toDoCounterClassName = 'ToDoCounter'
+
+  if (!!loading) {
+    toDoCounterClassName = 'ToDoCounter--loading';
+  }
+  if (!!storageChange) {
+    toDoCounterClassName = 'ToDoCounter--bloked';
+  }
+
   return (
-    <h2 className={`ToDoCounter${!!loading && '--loading'}`}> 
-      {!loading && `Has completado ${completed} de ${total} Tareas`}  
-      {!!loading && `Cargando Tareas...`} 
-    </h2>
+    <Fragment>
+      <br />
+      <h2 className={toDoCounterClassName}> 
+        {!loading && `Has completado ${completed} de ${total} Tareas`}  
+        {!!loading && `Cargando Tareas...`} 
+      </h2>
+    </Fragment>
   )
 }
 
